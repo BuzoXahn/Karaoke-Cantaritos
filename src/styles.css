@@ -1,0 +1,191 @@
+:root {
+  --noche: #140E1E;
+  --noche-2: #1F1730;
+  --barro: #D4691E;
+  --barro-claro: #E8842C;
+  --limon: #B8D94A;
+  --arena: #F2E7D5;
+  --neon: #E64980;
+  --linea: rgba(242, 231, 213, 0.14);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--noche);
+  color: var(--arena);
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+main { max-width: 640px; margin: 0 auto; padding: 1.25rem 1.25rem 4rem; }
+
+h1 {
+  font-size: clamp(2.6rem, 12vw, 4rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin: 0.2em 0;
+  color: var(--barro-claro);
+}
+
+/* ---- Formulario del cliente ---- */
+.marquesina { padding: 1.5rem 0 0.5rem; }
+.marquesina .bar {
+  margin: 0;
+  font-weight: 600;
+  color: var(--limon);
+}
+.mesa-chip {
+  display: inline-block;
+  margin-top: 0.35rem;
+  padding: 0.3rem 0.85rem;
+  border: 1.5px solid var(--limon);
+  border-radius: 999px;
+  color: var(--limon);
+  font-weight: 700;
+}
+
+form { display: grid; gap: 1rem; margin-top: 1.25rem; }
+
+label { display: grid; gap: 0.4rem; font-weight: 600; }
+
+input {
+  font: inherit;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: 1.5px solid var(--linea);
+  background: var(--noche-2);
+  color: var(--arena);
+}
+input::placeholder { color: rgba(242, 231, 213, 0.4); }
+input:focus-visible {
+  outline: 2px solid var(--limon);
+  outline-offset: 2px;
+  border-color: transparent;
+}
+
+button {
+  font: inherit;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+button:focus-visible { outline: 2px solid var(--limon); outline-offset: 2px; }
+
+.principal {
+  padding: 1rem;
+  font-size: 1.1rem;
+  background: var(--barro);
+  color: var(--noche);
+}
+.principal:active { background: var(--barro-claro); }
+.principal:disabled { opacity: 0.6; cursor: default; }
+
+.secundario {
+  padding: 0.5rem 0.9rem;
+  background: transparent;
+  border: 1.5px solid var(--linea);
+  color: var(--arena);
+}
+
+.error { color: var(--neon); font-weight: 600; margin: 0; }
+
+.confirmacion { display: grid; gap: 1rem; font-size: 1.15rem; }
+.confirmacion .detalle {
+  color: var(--limon);
+  border-left: 3px solid var(--barro);
+  padding-left: 0.75rem;
+}
+
+/* ---- Cabina del DJ ---- */
+.dj-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+.dj h1 { font-size: clamp(1.8rem, 7vw, 2.6rem); }
+.resumen { margin: 0; color: var(--limon); font-weight: 600; }
+.vacio { margin-top: 3rem; text-align: center; color: rgba(242, 231, 213, 0.6); }
+
+.cola {
+  list-style: none;
+  counter-reset: fila;
+  padding: 0;
+  margin: 1.25rem 0 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.cola li {
+  counter-increment: fila;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.9rem 1rem;
+  background: var(--noche-2);
+  border: 1.5px solid var(--linea);
+  border-radius: 14px;
+}
+.cola li.siguiente { border-color: var(--barro); }
+.cola .info { position: relative; padding-left: 2.1rem; min-width: 0; }
+.cola .info::before {
+  content: counter(fila);
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  font-weight: 800;
+  color: var(--barro-claro);
+}
+.cola p { margin: 0; }
+.cola .cancion { font-weight: 800; font-size: 1.15rem; }
+.cola .artista { color: rgba(242, 231, 213, 0.75); }
+.cola .quien { color: var(--limon); margin-top: 0.2rem; }
+
+.acciones { display: grid; gap: 0.5rem; }
+.acciones button { padding: 0.6rem 0.9rem; }
+.ok { background: var(--limon); color: var(--noche); }
+.borrar {
+  background: transparent;
+  border: 1.5px solid var(--neon);
+  color: var(--neon);
+}
+
+.login { max-width: 420px; }
+.login h1 { font-size: 2.2rem; color: var(--arena); }
+
+/* ---- Hoja de QRs ---- */
+.qrs { max-width: 900px; }
+.instruccion { color: rgba(242, 231, 213, 0.7); }
+.qr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+.qr-grid figure {
+  margin: 0;
+  padding: 1.25rem;
+  background: #fff;
+  color: #140E1E;
+  border-radius: 14px;
+  display: grid;
+  justify-items: center;
+  gap: 0.6rem;
+  text-align: center;
+}
+.qr-grid figcaption span { display: block; font-weight: 800; font-size: 1.2rem; }
+.qr-grid figcaption small { color: #555; }
+
+@media print {
+  body { background: #fff; }
+  .no-print { display: none; }
+  .qr-grid figure { break-inside: avoid; border: 1px solid #ddd; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
